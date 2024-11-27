@@ -1,6 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"myproject/company"
+	"myproject/person"
+	"myproject/robot"
+)
 
 type Speaker interface {
 	Speak()
@@ -38,21 +43,10 @@ func Write(o Obj) {
 }
 
 func main() {
-	fmt.Println("Привет мир!")
+	pers := person.Person{}
+	comp := company.Company{}
+	robot := &robot.Robot{}
 
-	cat := Cat{Name: "Муизза"}
-	dog := Dog{Name: "Барсик", Age: 10}
-
-	// Используем интерфейс напрямую
-	cat.Speak()
-	dog.Speak()
-
-	// Используем MakeSound для полиморфизма
-	MakeSound(cat)
-	MakeSound(dog)
-
-	// Используем пустой интерфейс
-	Write(cat)
-	Write(dog)
-
+	comp.Hire(pers)
+	comp.Hire(robot)
 }
